@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Routes/Home";
+import { useState } from "react";
+import Footer from "./components/Footer/Footer";
+import { MovieContext } from "./context/movieContext";
 
-function App() {
+import Header from "./components/UI/Header/Header";
+
+const App = () => {
+  const [title, setTitle] = useState<string>("");
+
+  const value: {
+    title: string;
+    setTitle: (title: string) => void;
+   // value?: any;
+  } = {
+    title: title,
+    setTitle: setTitle
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MovieContext.Provider value={value}>
+      <>
+        <div data-testid="header-div" className="App">
+          <Header />
+        </div>
+        <Routes>
+          <Route path="/*" element={<Home title={title} />} />
+        </Routes>
+        <Footer />
+      </>
+    </MovieContext.Provider>
   );
-}
+};
 
 export default App;
