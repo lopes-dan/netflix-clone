@@ -1,4 +1,4 @@
-import classes from "./Carousel.module.css";
+import classes from "./Carousel.module.scss";
 import CarouselItem from "./CarouselItem";
 import {  useContext } from "react";
 import { MovieContext } from "../../context/movieContext"

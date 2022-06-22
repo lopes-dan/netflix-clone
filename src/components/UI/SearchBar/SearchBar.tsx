@@ -5,7 +5,7 @@ import { MovieContext } from "../../../context/movieContext";
 import { animated, useTransition } from "react-spring";
 import { ImCross } from "react-icons/im";
 import useOutsideSearch from "./useOutsideSearch";
-import classes from "./Search.module.css"
+import classes from "./Search.module.scss"
 import SearchIcon from './SearchIcon';
 
 interface SearchBarTypes {

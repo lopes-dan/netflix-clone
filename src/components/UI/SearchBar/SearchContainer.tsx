@@ -1,4 +1,4 @@
-import classes from "./Search.module.css";
+import classes from "./Search.module.scss";
 import SearchIcon from "./SearchIcon";
 import SearchBar from "./SearchBar";
 

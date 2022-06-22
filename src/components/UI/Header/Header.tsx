@@ -1,4 +1,4 @@
-import classes from "./Header.module.css";
+import classes from "./Header.module.scss";
 import { useEffect, useState } from "react";
 import NavLinks from "./NavLinks";
 import SearchContainer from "../SearchBar/SearchContainer";

@@ -1,4 +1,4 @@
-import classes from "./Carousel.module.css";
+import classes from "./Carousel.module.scss";
 import useFetch from "../useFetch";
 //https://api.themoviedb.org/3/search/movie?api_key=61f6df5ed9d51d8fbe5ad9c6d5acc000&query=easy+rider
 import { useState, useRef } from 'react';
