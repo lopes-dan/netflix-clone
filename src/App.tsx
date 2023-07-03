@@ -4,7 +4,7 @@ import Home from "./Routes/Home";
 import { useState } from "react";
 import Footer from "./components/Footer/Footer";
 import { MovieContext } from "./context/movieContext";
-
+import SearchResultsPage from "./components/UI/SearchBar/SearchResultsPage";
 import Header from "./components/UI/Header/Header";
 
 const App = () => {
@@ -13,12 +13,11 @@ const App = () => {
   const value: {
     title: string;
     setTitle: (title: string) => void;
-   // value?: any;
+    // value?: any;
   } = {
     title: title,
     setTitle: setTitle
   };
-
   return (
     <MovieContext.Provider value={value}>
       <>
@@ -26,8 +25,8 @@ const App = () => {
           <Header />
         </div>
         <Routes>
-      
           <Route path="/:id" element={<Home title={title} />} />
+          <Route path="/search" element={<SearchResultsPage />} />
         </Routes>
         <Footer />
       </>

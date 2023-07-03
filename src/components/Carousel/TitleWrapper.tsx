@@ -45,6 +45,7 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
                     position: 'absolute',
                     top: 0,
                     left: 0,
+                    pointerEvents: 'auto',
                     width: '100%',
                     height: '100%',
                     border: "none",
@@ -56,7 +57,7 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
                 />
 
               </div>
-              <div className={classes["description-section"]}>
+              <div style={{cursor: "pointer"}} className={classes["description-section"]}>
                 <p className={classes["description-details"]}> {title.overview}</p>
                 <a href={title.video} target="_blank">
                   <button className={classes["description.play"]}>Play</button>
@@ -72,10 +73,6 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
 };
 
 export default TitleWrapper;
-
-
-
-
 
 
 

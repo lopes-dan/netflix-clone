@@ -16,6 +16,7 @@ const Poster: React.FC<Props> = ({ url, triggerOn, triggerOut, title }) => {
     return (
         <>
             <img
+                style={{cursor: "pointer"}}
                 onMouseEnter={triggerOn}
                 onMouseOut={triggerOut}
                 id="poster"
