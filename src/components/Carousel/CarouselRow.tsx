@@ -12,19 +12,19 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useEffect, useRef, useState } from "react";
 import { Swiper as SwiperType } from 'swiper';
-
+import { Title } from "./../../Types/types";
 
 interface Props {
-    titles: [] | null,
+    titles: Title[],
     category: string
-}const CarouselRow: React.FC<Props> = ({ titles, category }) => {
+}
+const CarouselRow: React.FC<Props> = ({ titles, category }) => {
     const [zIndex, setZIndex] = useState(1);
     const [hidePrev, setHidePrev] = useState<boolean>(true)
     const [offset, setOffset] = useState<number>(40);
     const [clickCount, setClickCount] = useState(0);
-    const mediaQueryMd = window.matchMedia('(min-width: 768px) and (max-width: 1024px)');
-    const mediaQueryLg = window.matchMedia('(min-width: 1025px) and (max-width: 1440px)');
     const mediaQueryXl = window.matchMedia('(min-width: 1441px)');
+    console.log(titles + " HERE BRO ");
 
     const slideContainerRef = useRef<HTMLDivElement>(null);
 
@@ -44,9 +44,9 @@ interface Props {
     };
 
     useEffect(() => {
-        if (mediaQueryXl.matches){
-          //  setOffset(91)
-           // setOffset(0)
+        if (mediaQueryXl.matches) {
+            //  setOffset(91)
+            // setOffset(0)
         }
     }, [])
 
@@ -76,12 +76,12 @@ interface Props {
                     watchSlidesProgress={true}
                     className={classes["external-buttons"]}>
 
-
-                    {titles && titles.map((title: any): any => (
+                    {Array.isArray(titles) ? titles.map((title: any): any => (
                         <SwiperSlide className={classes["title-div"]} key={title.id}>
                             <TitleWrapper title={{ poster: title.poster, video: title.video, overview: title.overview }} />
                         </SwiperSlide>
-                    ))}
+                    )) : []}
+
                 </Swiper>
                 <div className={`swiper-button-prev swiper-button-prev-${category}`} style={{ visibility: hidePrev ? 'hidden' : 'visible' }}></div>
                 <div onClick={handleNextClick} style={{ position: "absolute", zIndex: 1 }} className={`swiper-button-next swiper-button-next-${category}`}></div>

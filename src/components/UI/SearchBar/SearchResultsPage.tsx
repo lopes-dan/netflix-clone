@@ -8,29 +8,63 @@ interface Result {
   title: any
 }
 
+interface Title {
+  id: string;
+  name: string;
+  country: string[];
+  genre: string[];
+  language: string;
+  video: string;
+  overview: string;
+  poster: string;
+}
+
+
 const SearchResultsPage = (title: any) => {
 
-  const [titles, setTitles] = useState([]);
+  const [titles, setTitles] = useState<Title[]>([]);
   const queryParams = new URLSearchParams(window.location.search);
   let key = queryParams.get("q");
 
-
   useEffect(() => {
     const fetchData = async () => {
-      const url = new URL('https://6367f480d1d09a8fa61e322a.mockapi.io/content/shows');
-      url.searchParams.append('name', key || "");
+      const urlShows = new URL('https://6367f480d1d09a8fa61e322a.mockapi.io/content/shows');
+      const urlMovies = new URL('https://6367f480d1d09a8fa61e322a.mockapi.io/content/movies');
+      urlShows.searchParams.append('name', key || "");
+      urlMovies.searchParams.append('name', key || "");
+
+      const requestShows = fetch(urlShows, {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' },
+      });
+
+      const requestMovies = fetch(urlMovies, {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' },
+      });
 
       try {
-        const res = await fetch(url, {
-          method: 'GET',
-          headers: { 'content-type': 'application/json' },
-        });
+        const [resShows, resMovies] = await Promise.all([requestShows, requestMovies]);
 
-        if (res.ok) {
-          const shows = await res.json();
-          console.log(shows); // log the response here
-          // mockapi returns only the show with name as per search input
-          setTitles(shows);
+        if (resShows.ok && resMovies.ok) {
+          const shows = await resShows.json();
+          const movies = await resMovies.json();
+
+          const combined = [...shows, ...movies];
+
+          const uniqueMap: Record<string, boolean> = {};
+
+
+          const uniqueTitles = combined.filter((title) => {
+            if (uniqueMap[title.id]) {
+              return false;
+            } else {
+              uniqueMap[title.id] = true;
+              return true;
+            }
+          });
+
+          setTitles(uniqueTitles);
         } else {
           // handle error
         }
@@ -42,6 +76,8 @@ const SearchResultsPage = (title: any) => {
     fetchData();
 
   }, [key]);
+
+
 
 
   useEffect(() => {

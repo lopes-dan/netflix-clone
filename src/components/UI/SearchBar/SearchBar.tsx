@@ -47,12 +47,12 @@ const SearchBar: React.FC<SearchBarTypes> = ({ isWide, alterIsWide }) => {
   };
 
   const [data] = useFetch(
-  `https://api.themoviedb.org/3/search/movie?api_key=61f6df5ed9d51d8fbe5ad9c6d5acc000&query=${search}`, search
+    `https://api.themoviedb.org/3/search/movie?api_key=61f6df5ed9d51d8fbe5ad9c6d5acc000&query=${search}`, search
   );
 
   const [searched] = useFetch(
-   `https://api.themoviedb.org/3/search/movie?api_key=61f6df5ed9d51d8fbe5ad9c6d5acc000&query=${key}`, search
-    
+    `https://api.themoviedb.org/3/search/movie?api_key=61f6df5ed9d51d8fbe5ad9c6d5acc000&query=${key}`, search
+
   );
 
   const getSearch = (e: any) => {

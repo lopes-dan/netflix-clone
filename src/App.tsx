@@ -24,10 +24,13 @@ const App = () => {
         <div data-testid="header-div" className="App">
           <Header />
         </div>
+
         <Routes>
+        <Route path="/" element={<Home title={title} />} />
           <Route path="/:id" element={<Home title={title} />} />
           <Route path="/search" element={<SearchResultsPage />} />
         </Routes>
+
         <Footer />
       </>
     </MovieContext.Provider>
