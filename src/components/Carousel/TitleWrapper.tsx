@@ -57,7 +57,7 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
                 />
 
               </div>
-              <div style={{cursor: "pointer"}} className={classes["description-section"]}>
+              <div style={{ cursor: "pointer" }} className={classes["description-section"]}>
                 <p className={classes["description-details"]}> {title.overview}</p>
                 <a href={title.video} target="_blank">
                   <button className={classes["description.play"]}>Play</button>
@@ -74,74 +74,3 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
 
 export default TitleWrapper;
 
-
-
-
-
-
-
-
-
-
-
-/*
-interface Props {
-  title: object | any
-}
-
-const TitleWrapper: React.FC<Props> = ({ title }) => {
-  const [isHovering, setIsHovering] = useState<boolean>(false);
-
-
-  const triggerOn = (e: any) => {
-    //e.stopProgation()
-    setIsHovering(true);
-
-  };
-
-  const triggerOut = (e: any) => {
-    setIsHovering(false);
-  };
-
-  useEffect(() => {
-    console.log("here bro", isHovering)
-  }, [isHovering])
-  return (
-    <>
-
-      <div
-      className={classes["video"]}
-        onMouseEnter={triggerOn}
-        onMouseOut={triggerOut} >
-
-        {isHovering && (
-
-
-          <div className={classes["description"]}>
-            <iframe
-
-              allow="autoplay; encrypted-media"
-              src={`https://www.youtube.com/embed/${title.video.slice(
-                title.video.lastIndexOf("=") + 1
-              )}?controls=0&autoplay=1&mute=0`}
-            ></iframe>
-          </div>
-        )}
-      </div>
-      <img
-
-
-        id="poster"
-        src={title.poster}
-        alt="title-poster"
-        className={`${classes.poster}`}
-      />
-
-
-    </>
-  );
-};
-
-export default TitleWrapper;
-
-*/
