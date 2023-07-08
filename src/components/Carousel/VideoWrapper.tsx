@@ -1,10 +1,5 @@
 import classes from "./Carousel.module.scss";
 
-/*interface Props {
-    titles: [] | null,
-    link: string
-}*/
-
 
 const VideoWrapper = () => {
 

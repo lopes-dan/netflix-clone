@@ -27,8 +27,7 @@ const Carousel = () => {
 
     async function fetchAll() {
       const [shows, movies] = await Promise.all([getTitles('shows'), getTitles('movies')]);
-      console.log('shows:', shows); // log the data received from the API
-      console.log('movies:', movies);
+     
       let merged = [];
       for (let i = 0; i < 18; i++) {
         if (shows[i]) {
@@ -38,12 +37,6 @@ const Carousel = () => {
           merged.push(movies[i]);
         }
       }
-
-      console.log(merged.length + "length") // should print "36length"
-
-      console.log(Array.isArray(shows)); // should print "true"
-      console.log(Array.isArray(movies)); // should print "true"
-      console.log(Array.isArray(merged)); // should print "true"
 
       setTitles(merged)
     }
@@ -62,7 +55,6 @@ const Carousel = () => {
       setTitles(null);
     }
   }, [id]);
-  console.log(Array.isArray(titles) + " Carousel")
   return (
 
     <div style={{ background: '#141414' }} data-testid="carousel">

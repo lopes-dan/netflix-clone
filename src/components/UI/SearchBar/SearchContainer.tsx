@@ -6,7 +6,9 @@ import { useState, useRef } from "react";
 
 
 const SearchContainer = () => {
-  const [isWide, setIsWide] = useState(false);
+ const [isWide, setIsWide] = useState(false);
+ // const [isWide, setIsWide] = useState(key && key.length > 0 ? true : false);
+
   const displaySearch = () => {
     setIsWide((prev) => !prev);
   };

@@ -24,7 +24,6 @@ const CarouselRow: React.FC<Props> = ({ titles, category }) => {
     const [offset, setOffset] = useState<number>(40);
     const [clickCount, setClickCount] = useState(0);
     const mediaQueryXl = window.matchMedia('(min-width: 1441px)');
-    console.log(titles + " HERE BRO ");
 
     const slideContainerRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +62,6 @@ const CarouselRow: React.FC<Props> = ({ titles, category }) => {
                     slidesPerView={7}
                     slidesPerGroup={6}
                     loop={true}
-                    onReachEnd={() => console.log("damn")}
                     slidesOffsetBefore={offset}
                     key={category}
                     speed={500}
