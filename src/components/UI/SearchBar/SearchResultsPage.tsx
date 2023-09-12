@@ -94,7 +94,8 @@ const SearchResultsPage = (title: any) => {
             <TitleWrapper title={{ poster: title.poster, video: title.video, overview: title.overview }} />
           </div>
         ))}
-      </div>
+        </div>
+    
     </div>
   );
 };

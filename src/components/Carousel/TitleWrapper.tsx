@@ -16,7 +16,9 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
 
   const handleMouseEnter = () => {
 
-    setIsHovering(true);
+  
+      setIsHovering(true);
+
   };
 
   const handleMouseLeave = () => {
@@ -38,30 +40,24 @@ const TitleWrapper: React.FC<Props> = ({ title }) => {
       >
         {isHovering && (
           <>
+            <iframe
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                pointerEvents: 'auto',
+                width: '100%',
+                height: '100%',
+                border: "none",
+              }}
+              src={`https://www.youtube.com/embed/${title.video.slice(
+                title.video.lastIndexOf("=") + 1
+              )}?controls=0&autoplay=1&mute=0`}
+              allow="autoplay; encrypted-media"
+            />
             <div className={classes["description"]}>
-              <div className={classes["description-margin"]}>
-                <iframe
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    pointerEvents: 'auto',
-                    width: '100%',
-                    height: '100%',
-                    border: "none",
-                  }}
-                  src={`https://www.youtube.com/embed/${title.video.slice(
-                    title.video.lastIndexOf("=") + 1
-                  )}?controls=0&autoplay=1&mute=0`}
-                  allow="autoplay; encrypted-media"
-                />
-
-              </div>
               <div style={{ cursor: "pointer" }} className={classes["description-section"]}>
                 <p className={classes["description-details"]}> {title.overview}</p>
-                <a href={title.video} target="_blank">
-                  <button className={classes["description.play"]}>Play</button>
-                </a>
               </div>
             </div>
 

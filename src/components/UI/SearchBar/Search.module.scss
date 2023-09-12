@@ -98,7 +98,14 @@ $text-color: white;
 }
 
 
+@media screen and (min-width: 1490px) and (max-width: 2400px) {
+    /* Your CSS rules for screens between 1490px and 2400px wide go here */
+    /* For example, you can change the background color for this range */
+    .result {
+      margin-left: 3vw;
+    }  
 
+}
 .result {
     transform: scale(0.7);
     //z-index: -2;
@@ -108,6 +115,12 @@ $text-color: white;
     cursor: pointer !important;
     //max-width: 132px;
     //margin-right: 13px
+
+    transform: scale(0.9);
+    transition: 0.3s !important;
+    transition-delay: 0.1s !important;
+    cursor: pointer !important;
+    width: 293px;
 }
 
 .result:hover {

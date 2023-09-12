@@ -13,7 +13,7 @@ const Home: React.FC<Props> = ({ title }) => {
 
   return (
     <>
-      <div data-testid="homeWrapper">
+      <div data-testid="homeWrapper" style={{overflow: "hidden", position:"relative"}}>
         <MainVideo title={title} />
 
         <Carousel data-testid="carousel" />

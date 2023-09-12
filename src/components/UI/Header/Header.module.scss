@@ -7,6 +7,7 @@
     position: fixed;
     z-index: 1;
     width: 100vw;
+    min-width: 644px;
     transition: 500ms linear;
     background-image: linear-gradient(to bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0))
 }

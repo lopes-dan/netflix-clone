@@ -13,7 +13,8 @@
   color: white;
   position: absolute;
   left: 60.2px;
-  font-size: 22px
+  font-size: 22px;
+  top: -3px
 }
 
 
@@ -51,6 +52,12 @@
   transition: 0.3s !important;
   transition-delay: 0.1s !important;
   width: 21.2% !important;
+ 
+}
+
+.title-div > * {
+  transform: scale(1);
+  transform-origin: top left;
 }
 
 .title-div:not(:last-child) {
@@ -60,12 +67,12 @@
 .title-div:hover {
   transform: scale(1) !important;
   z-index: 6 !important;
-  //transform: translateY(-30%)
-
 }
 
 .title-wrapper {
   position: relative;
+  touch-action: manipulation; /* Prevent double-tap zoom on touch devices */
+  zoom: 1;
 }
 
 .title-wrapper:hover {
@@ -76,44 +83,48 @@
   transform: translateY(-30%);
 }
 
+
 .video {
   height: 152px;
   z-index: 2;
   background: black;
-  width: 21.3vw;
+  
   cursor: pointer;
   min-height: 12vw;
   text-align: center;
-  //border: 1px solid black;
-  margin-right: -6vw;
   transition-duration: 0.4s;
 
 }
 
+@media (min-width: 100px) {
+  .video{
+    min-width: 21.3vw;
+  }
+}
+
+
 .video:hover {
   background: rgb(44, 42, 42);
-  background-size: 70%;
-  background: cover;
+  background-size: 80%;
   position: relative;
-  z-index: 2;
-  position: absolute;
-  transform: translateY(-90px)  translateZ(1px);
 
 }
 
+
 .description {
-  height: 373px;
-  width: 21.3vw;
+  height: 140%;
+  //width: 21.3vw;
   position: relative;
   z-index: 2;
   transition: 0.5s ease-in-out;
+  overflow: hidden;
   
 }
 
 
 .description-margin{
  
-   padding-bottom: 182px;
+  
    z-index: 7;
    position: relative;
 }
@@ -121,22 +132,26 @@
 
 .description-section {
   width: 100%;
-  height: 144px;
+  height:  284px;
   position: relative;
   z-index: 7;
-
-  //bottom: 28px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
   background: #181818;
   
 }
-.description-details{
-  padding-right: 12px;
-  padding-left: 12px;
-  padding-top: 12px;
-   word-spacing: -2px;
+
+.description-details {
+  padding-left: 5%; /* Add equal padding to both sides for spacing */
+  padding-right: 5%;
+  padding-top: 3px;
+  text-align: justify;
+  word-spacing: -1px;
+  font-size: 2vh
+ 
 }
-
-
 
 .poster {
   height: 187px;

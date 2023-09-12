@@ -25,9 +25,33 @@ const CarouselRow: React.FC<Props> = ({ titles, category }) => {
     const [clickCount, setClickCount] = useState(0);
     const mediaQueryXl = window.matchMedia('(min-width: 1441px)');
 
+    const breakpoints = {
+        // When the screen width is less than or equal to 640px
+        340: {
+            slidesPerView: 1, // Display 1 slide at a time
+        },
+        // When the screen width is greater than 640px and less than or equal to 768px
+        768: {
+            //slidesPerView: 2, // Display 2 slides at a time
+            spaceBetween: -3, // Adjust space between slides
+        },
+        // When the screen width is greater than 768px and less than or equal to 1024px
+        1024: {
+            // slidesPerView: 5, // Display 3 slides at a time
+            spaceBetween: 0, // Adjust space between slides
+        },
+        // Default settings for larger screens
+        1440: {
+            // slidesPerView: 6, // Display 4 slides at a time
+            spaceBetween: 0, // Adjust space between slides
+        },
+    };
     const slideContainerRef = useRef<HTMLDivElement>(null);
 
     SwiperCore.use([Autoplay]);
+
+    // const [slidesPerGroup, setSlidesPerGroup] = useState<number>(6); // Initial value
+
 
     const handleTransitionEnd = (swiper: SwiperType) => {
         const currentSlideIndex = swiper.activeIndex;
@@ -43,14 +67,11 @@ const CarouselRow: React.FC<Props> = ({ titles, category }) => {
     };
 
     useEffect(() => {
-        if (mediaQueryXl.matches) {
-            //  setOffset(91)
-            // setOffset(0)
-        }
+        // console.log(slideContainerRef)
     }, [])
 
     return (
-        <div ref={slideContainerRef} style={{ position: "relative", zIndex }}
+        <div style={{ position: "relative", zIndex }}
             className={classes['carousel-row-div']}
             onMouseLeave={() => setZIndex(1)}
             onMouseEnter={() => setZIndex(2)}>
@@ -59,17 +80,19 @@ const CarouselRow: React.FC<Props> = ({ titles, category }) => {
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     slideNextClass={"prev"}
-                    slidesPerView={7}
-                    slidesPerGroup={6}
+
                     loop={true}
+                    slidesPerGroup={6}
+                    slidesPerView={7}
+                  
                     slidesOffsetBefore={offset}
                     key={category}
                     speed={500}
+
                     navigation={{
                         prevEl: `.swiper-button-prev-${category}`,
                         nextEl: `.swiper-button-next-${category}`,
                     }}
-
                     onSlideChangeTransitionEnd={(e) => handleTransitionEnd(e)}
                     watchSlidesProgress={true}
                     className={classes["external-buttons"]}>
